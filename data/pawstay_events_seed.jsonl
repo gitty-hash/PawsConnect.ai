@@ -1,0 +1,38 @@
+{"type": "flag", "case_id": "seed_01", "day": 3, "status": "Urgent Human Follow-up", "ts": 1760086400}
+{"type": "contact", "case_id": "seed_01", "day": 3, "ts": 1760097200}
+{"type": "outcome", "case_id": "seed_01", "outcome": "stabilised", "ts": 1762678400}
+{"type": "flag", "case_id": "seed_02", "day": 14, "status": "Urgent Human Follow-up", "ts": 1760172800}
+{"type": "contact", "case_id": "seed_02", "day": 14, "ts": 1760223200}
+{"type": "outcome", "case_id": "seed_02", "outcome": "stabilised", "ts": 1762764800}
+{"type": "flag", "case_id": "seed_03", "day": 14, "status": "Needs Attention", "ts": 1760259200}
+{"type": "contact", "case_id": "seed_03", "day": 14, "ts": 1760280800}
+{"type": "outcome", "case_id": "seed_03", "outcome": "stabilised", "ts": 1762851200}
+{"type": "flag", "case_id": "seed_04", "day": 14, "status": "Needs Attention", "ts": 1760345600}
+{"type": "contact", "case_id": "seed_04", "day": 14, "ts": 1760439200}
+{"type": "outcome", "case_id": "seed_04", "outcome": "returned", "ts": 1762937600}
+{"type": "flag", "case_id": "seed_05", "day": 7, "status": "Urgent Human Follow-up", "ts": 1760432000}
+{"type": "contact", "case_id": "seed_05", "day": 7, "ts": 1760442800}
+{"type": "outcome", "case_id": "seed_05", "outcome": "stabilised", "ts": 1763024000}
+{"type": "flag", "case_id": "seed_06", "day": 3, "status": "Urgent Human Follow-up", "ts": 1760518400}
+{"type": "contact", "case_id": "seed_06", "day": 3, "ts": 1760540000}
+{"type": "outcome", "case_id": "seed_06", "outcome": "stabilised", "ts": 1763110400}
+{"type": "flag", "case_id": "seed_07", "day": 14, "status": "Needs Attention", "ts": 1760604800}
+{"type": "contact", "case_id": "seed_07", "day": 14, "ts": 1760640800}
+{"type": "outcome", "case_id": "seed_07", "outcome": "stabilised", "ts": 1763196800}
+{"type": "flag", "case_id": "seed_08", "day": 14, "status": "Needs Attention", "ts": 1760691200}
+{"type": "contact", "case_id": "seed_08", "day": 14, "ts": 1760705600}
+{"type": "outcome", "case_id": "seed_08", "outcome": "stabilised", "ts": 1763283200}
+{"type": "flag", "case_id": "seed_09", "day": 3, "status": "Needs Attention", "ts": 1760777600}
+{"type": "contact", "case_id": "seed_09", "day": 3, "ts": 1760828000}
+{"type": "outcome", "case_id": "seed_09", "outcome": "stabilised", "ts": 1763369600}
+{"type": "flag", "case_id": "seed_10", "day": 14, "status": "Urgent Human Follow-up", "ts": 1760864000}
+{"type": "contact", "case_id": "seed_10", "day": 14, "ts": 1760871200}
+{"type": "outcome", "case_id": "seed_10", "outcome": "stabilised", "ts": 1763456000}
+{"type": "flag", "case_id": "seed_11", "day": 3, "status": "Needs Attention", "ts": 1760950400}
+{"type": "contact", "case_id": "seed_11", "day": 3, "ts": 1760986400}
+{"type": "outcome", "case_id": "seed_11", "outcome": "stabilised", "ts": 1763542400}
+{"type": "outcome", "case_id": "seed_12", "outcome": "returned", "ts": 1763628800}
+{"type": "outcome", "case_id": "seed_13", "outcome": "stabilised", "ts": 1763715200}
+{"type": "outcome", "case_id": "seed_14", "outcome": "stabilised", "ts": 1763801600}
+{"type": "outcome", "case_id": "seed_15", "outcome": "stabilised", "ts": 1763888000}
+{"type": "outcome", "case_id": "seed_16", "outcome": "stabilised", "ts": 1763974400}

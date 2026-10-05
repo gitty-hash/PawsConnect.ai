@@ -1,0 +1,122 @@
+"""Tab - Part B: Photo-to-Profile listing generator (Chapter 2)."""
+from __future__ import annotations
+
+import json
+
+import streamlit as st
+
+from ..features.common import ROOT
+from ..features.profile import generate_profile
+from ..theme import badge, conf_badge, esc, review_flag
+from .common import gateway, guard, live_only_note
+
+IMG_DIR = ROOT / "Testing_Images"
+HARD = {"multiple_animals.jpg": "Hard case: multiple animals", "hard_case_blurry.jpg": "Hard case: blurry photo",
+        "no_animal.jpg": "Hard case: no animal"}
+
+
+def _sample_files() -> list:
+    return sorted(IMG_DIR.glob("*.jpg"))
+
+
+def _profile_for(name: str, raw: bytes):
+    cache = st.session_state.setdefault("profiles", {})
+    if name not in cache:
+        with st.spinner("The vision model is reading the photo..."):
+            result = guard(generate_profile, gateway(), raw)
+        if result is not None:
+            cache[name] = result
+    return cache.get(name)
+
+
+def render_card(p: dict) -> None:
+    """The listing card a shelter worker reviews - cards and badges, not JSON."""
+    names = " ".join(badge(n, "purple") for n in p["suggested_names"]) or "<span class='pc-muted'>none suggested</span>"
+    tier = p["fee_tier"] + (f" - ${p['fee_amount']}" if p.get("fee_amount") else "")
+    care = "".join(f"<li>{esc(c)}</li>" for c in p["care_requirements"]) or "<li class='pc-muted'>not determinable</li>"
+    st.markdown(f"""
+<div class="pc-card">
+  <h4>Draft adoption profile</h4>
+  <div class="pc-muted">Suggested names</div><div style="margin-bottom:8px">{names}</div>
+  <div>{badge(p['species'].capitalize(), 'blue')}{badge(str(p['animal_count']) + ' animal(s) in photo', 'grey')}{badge('Photo: ' + p['image_quality'], {'clear':'green','acceptable':'amber','poor':'red'}[p['image_quality']])}</div>
+  <p style="margin:8px 0 2px"><b>Breed guess:</b> {esc(p['breed_guess'])}</p>
+  <div>{conf_badge('Breed', p['breed_confidence'])}<span class="pc-muted"> {esc(p['breed_evidence'])}</span></div>
+  <p style="margin:8px 0 2px"><b>Estimated age:</b> {esc(p['age_range'])}</p>
+  <div>{conf_badge('Age', p['age_confidence'])}</div>
+  <p style="margin:8px 0 2px"><b>Personality (for adopters):</b></p>
+  <p style="margin:0 0 4px">{esc(p['personality'])}</p>
+  <div>{conf_badge('Personality', p['personality_confidence'])}</div>
+  <p style="margin:8px 0 2px"><b>Care requirements</b></p>
+  <ul style="margin:0 0 6px 18px">{care}</ul>
+  <p style="margin:8px 0 2px"><b>Adoption-fee tier:</b> {esc(tier)}</p>
+  <div class="pc-muted">{esc(p['fee_tier_reason'])} (Tiers use age only, never breed.)</div>
+</div>
+""", unsafe_allow_html=True)
+    st.markdown(review_flag(p["review_reasons"], p["human_review"]), unsafe_allow_html=True)
+    if p["uncertain_fields"]:
+        st.caption("Fields the model said it could not determine (fallback rule): " + ", ".join(p["uncertain_fields"]))
+
+
+def render() -> None:
+    st.subheader("Photo-to-Profile listing generator")
+    st.caption("Chapter 2 - multimodal vision model + structured output + fallback prompting (eBay Magical Listing). "
+               "A shelter worker uploads one photo; the model drafts the listing; a human reviews it.")
+    live_only_note()
+
+    files = _sample_files()
+    left, right = st.columns([5, 7], gap="large")
+    with left:
+        source = st.radio("Photo source", ["Bundled sample photos", "Upload my own photo (Live mode)"],
+                          horizontal=False, label_visibility="collapsed")
+        raw, name = None, None
+        if source.startswith("Bundled"):
+            labels = {f.name: f"{f.name}  -  {HARD[f.name]}" if f.name in HARD else f.name for f in files}
+            name = st.selectbox("Sample photo", list(labels), format_func=lambda n: labels[n])
+            raw = (IMG_DIR / name).read_bytes()
+        else:
+            up = st.file_uploader("Pet photo", type=["jpg", "jpeg", "png"])
+            if up is not None:
+                raw, name = up.getvalue(), f"upload:{up.name}"
+            if st.session_state.get("mode") == "cached":
+                st.info("Uploads need Live mode - the cached demo only knows the bundled photos.")
+        if raw is not None:
+            st.image(raw, width=360)
+            if name in HARD:
+                st.markdown(badge(HARD[name], "orange"), unsafe_allow_html=True)
+        go = st.button("Generate adoption profile", type="primary", disabled=raw is None)
+
+    with right:
+        if raw is not None and (go or name in st.session_state.get("profiles", {})):
+            p = _profile_for(name, raw)
+            if p:
+                render_card(p)
+                with st.expander("Developer view: structured JSON the platform stores"):
+                    st.code(json.dumps(p, indent=2), language="json")
+        else:
+            st.info("Pick a photo and press **Generate adoption profile**.")
+
+    st.divider()
+    st.markdown("#### Test run: all bundled photos")
+    st.caption("Five clear pets plus three hard cases (blurry, multiple animals, no animal). "
+               "Look at how the hard cases are handled: no invented breed, low confidence, and a review flag.")
+    if st.button("Run all sample photos"):
+        rows = []
+        bar = st.progress(0.0)
+        for i, f in enumerate(files):
+            p = _profile_for(f.name, f.read_bytes())
+            if p is None:
+                break
+            rows.append((f.name, p))
+            bar.progress((i + 1) / len(files))
+        st.session_state["profile_batch"] = rows
+    rows = st.session_state.get("profile_batch")
+    if rows:
+        body = ""
+        for fname, p in rows:
+            flag = badge("Review", "orange") if p["human_review"] else badge("OK", "green")
+            body += (f"<tr><td>{esc(fname)}</td><td>{esc(p['species'])} x{p['animal_count']}</td>"
+                     f"<td>{esc(p['breed_guess'])} {badge(p['breed_confidence'], {'high':'green','medium':'amber','low':'red'}[p['breed_confidence']])}</td>"
+                     f"<td>{esc(p['age_range'])}</td><td>{esc(p['fee_tier'])}</td><td>{flag}</td>"
+                     f"<td class='pc-muted'>{esc('; '.join(p['review_reasons'][:2]))}</td></tr>")
+        st.markdown('<table class="pc-table"><tr><th>Photo</th><th>Species</th><th>Breed guess</th><th>Age</th>'
+                    f'<th>Fee tier</th><th>Review</th><th>Why flagged</th></tr>{body}</table>', unsafe_allow_html=True)

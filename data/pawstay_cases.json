@@ -1,0 +1,133 @@
+{
+  "_note": "SYNTHETIC adopter check-in journeys written for the PawStay demo and evaluation set. The 'gold' labels are what a post-adoption coordinator would be expected to decide; 'status' is a list of acceptable labels where reasonable people could differ.",
+  "cases": [
+    {
+      "case_id": "rocky",
+      "pet_name": "Rocky",
+      "placement": "Dog, about 3 years, mixed breed. Household: couple + one 6-year-old child. No other pets.",
+      "adopter": "The Hendersons",
+      "checkins": [
+        {"day": 1, "text": "Rocky came home yesterday. He was pretty quiet and sniffed every room, then fell asleep on his new bed. He ate about half his dinner. We're keeping things calm.",
+         "gold": {"status": ["Stable"], "trend": ["First check-in"], "concern": "none"}},
+        {"day": 3, "text": "Rocky is eating normally and follows me around everywhere, but he growled when my 6-year-old tried to take his toy.",
+         "gold": {"status": ["Needs Attention"], "trend": ["New concern"], "concern": "child_pet_interaction"}},
+        {"day": 7, "text": "We put the toys in a basket on a high shelf and my daughter now asks me before giving him one. No growling this week. He sleeps outside her bedroom door at night, which she loves.",
+         "gold": {"status": ["Stable", "Needs Attention"], "trend": ["Improving"], "concern": "child_pet_interaction"}},
+        {"day": 14, "text": "Rocky traded a chew toy for a treat with my daughter's help while I watched. He's relaxed with her. Great week overall.",
+         "gold": {"status": ["Stable"], "trend": ["Improving"], "concern": "none"}},
+        {"day": 30, "text": "He's just part of the family now. Walks, naps, zoomies. No issues at all.",
+         "gold": {"status": ["Stable"], "trend": ["Stable"], "concern": "none"}}
+      ]
+    },
+    {
+      "case_id": "luna",
+      "pet_name": "Luna",
+      "placement": "Cat, about 5 years, shy. Household: single adult, no other pets.",
+      "adopter": "Priscilla N.",
+      "checkins": [
+        {"day": 1, "text": "Luna has been under my bed since we got home. She came out around 3am - I heard her in the litter box - and the food bowl was half empty this morning. I'm leaving her alone to settle.",
+         "gold": {"status": ["Stable"], "trend": ["First check-in"], "concern": "fear_or_hiding_or_shyness"}},
+        {"day": 3, "text": "She now eats in front of me if I sit across the room. She sniffed my hand today and let me pet her chin for a few seconds.",
+         "gold": {"status": ["Stable"], "trend": ["Improving"], "concern": "none"}},
+        {"day": 7, "text": "Luna jumped on the couch and curled up next to me tonight. She's playing with the feather wand.",
+         "gold": {"status": ["Stable"], "trend": ["Improving"], "concern": "none"}}
+      ]
+    },
+    {
+      "case_id": "max",
+      "pet_name": "Max",
+      "placement": "Dog, about 2 years, mixed breed. Household: single adult working full-time outside the home. No other pets.",
+      "adopter": "Daniel O.",
+      "checkins": [
+        {"day": 1, "text": "Max cried a lot the first night and whined when I left for 20 minutes to get groceries, but he ate well and loves his walks.",
+         "gold": {"status": ["Stable", "Needs Attention"], "trend": ["First check-in"], "concern": "separation_or_alone_distress"}},
+        {"day": 3, "text": "I went back to work today. My neighbor texted me that Max barked and howled most of the day. When I got home he'd peed by the door.",
+         "gold": {"status": ["Needs Attention"], "trend": ["Worsening", "New concern"], "concern": "separation_or_alone_distress"}},
+        {"day": 7, "text": "Barking again for hours every day. He chewed the corner of the door frame and shredded a cushion. I'm exhausted.",
+         "gold": {"status": ["Needs Attention", "Urgent Human Follow-up"], "trend": ["Worsening"], "concern": "separation_or_alone_distress"}},
+        {"day": 14, "text": "He got out of his crate and tore at the front door. His paws were bleeding a bit and he's still panting hard when I get home. I honestly don't know if I can keep doing this.",
+         "gold": {"status": ["Urgent Human Follow-up"], "trend": ["Worsening"], "concern": "destructive_or_escape_behavior"}}
+      ]
+    },
+    {
+      "case_id": "daisy",
+      "pet_name": "Daisy",
+      "placement": "Dog, about 9 years, senior. Household: retired couple. No other pets.",
+      "adopter": "The Marchetti couple",
+      "checkins": [
+        {"day": 1, "text": "Daisy is a sweetheart. She walked around the yard, drank water, ate her dinner and slept all night.",
+         "gold": {"status": ["Stable"], "trend": ["First check-in"], "concern": "none"}},
+        {"day": 3, "text": "Daisy hasn't eaten anything since yesterday morning. This morning she threw up yellow foam twice and she's very sleepy - she barely lifted her head when we got home.",
+         "gold": {"status": ["Urgent Human Follow-up"], "trend": ["New concern", "Worsening"], "concern": "possible_health_symptom"}}
+      ]
+    },
+    {
+      "case_id": "charlie",
+      "pet_name": "Charlie",
+      "placement": "Dog, about 1.5 years, mixed breed. Household: family with a resident 4-year-old terrier mix named Pepper.",
+      "adopter": "The Alvarez family",
+      "checkins": [
+        {"day": 1, "text": "Charlie and our dog Pepper sniffed each other on a walk and seemed fine. At home they mostly ignored each other.",
+         "gold": {"status": ["Stable"], "trend": ["First check-in"], "concern": "none"}},
+        {"day": 3, "text": "Charlie snapped at Pepper when she walked near his food bowl. No contact, just a loud snap. Otherwise they're okay.",
+         "gold": {"status": ["Needs Attention"], "trend": ["New concern"], "concern": "other_pet_conflict"}},
+        {"day": 7, "text": "Two more scuffles this week over toys. This morning Charlie nipped Pepper's ear and there's a small scratch. She yelps when he comes close.",
+         "gold": {"status": ["Needs Attention", "Urgent Human Follow-up"], "trend": ["Worsening"], "concern": "other_pet_conflict"}},
+        {"day": 14, "text": "We feed them in separate rooms now and walk them separately. Only one tense moment this week and no contact.",
+         "gold": {"status": ["Needs Attention", "Stable"], "trend": ["Improving"], "concern": "other_pet_conflict"}}
+      ]
+    },
+    {
+      "case_id": "bella",
+      "pet_name": "Bella",
+      "placement": "Cat, about 3 years. Household: family with two children. No other pets.",
+      "adopter": "The Brooks family",
+      "checkins": [
+        {"day": 1, "text": "Bella explored every room, ate well, and slept on my daughter's bed.",
+         "gold": {"status": ["Stable"], "trend": ["First check-in"], "concern": "none"}},
+        {"day": 3, "text": "She's using the litter box, playing with the kids and purring a lot.",
+         "gold": {"status": ["Stable"], "trend": ["Stable", "Improving"], "concern": "none"}},
+        {"day": 7, "text": "Totally settled. She greets us at the door when we get home.",
+         "gold": {"status": ["Stable"], "trend": ["Stable", "Improving"], "concern": "none"}},
+        {"day": 14, "text": "No issues at all. She's basically the boss of the house now.",
+         "gold": {"status": ["Stable"], "trend": ["Stable"], "concern": "none"}}
+      ]
+    },
+    {
+      "case_id": "oscar",
+      "pet_name": "Oscar",
+      "placement": "Dog, about 1.5 years, high energy, mixed breed. Household: couple, first-time dog owners.",
+      "adopter": "Kyle & Ana",
+      "checkins": [
+        {"day": 1, "text": "Oscar is adorable but WOW, so much energy. He's already chewed a slipper. We're tired but happy.",
+         "gold": {"status": ["Stable", "Needs Attention"], "trend": ["First check-in"], "concern": "destructive_or_escape_behavior"}},
+        {"day": 3, "text": "Oscar chewed a couch cushion and the zoomies mean we walk him three times a day. It's a lot but we're managing.",
+         "gold": {"status": ["Stable", "Needs Attention"], "trend": ["Stable", "Worsening"], "concern": "destructive_or_escape_behavior"}},
+        {"day": 7, "text": "Honestly Oscar is too much for us. He's up at 5am, he pulls on every walk, and my husband and I are fighting about it. I think we should just bring him back. What's the process?",
+         "gold": {"status": ["Urgent Human Follow-up"], "trend": ["Worsening"], "concern": "adopter_overwhelmed_or_return_intent"}}
+      ]
+    },
+    {
+      "case_id": "pepper",
+      "pet_name": "Pepper",
+      "placement": "Cat, about 6 years. Household: single adult, no other pets.",
+      "adopter": "Lena F.",
+      "checkins": [
+        {"day": 3, "text": "She's fine I guess. Different than I expected.",
+         "gold": {"status": ["Stable", "Needs Attention"], "trend": ["First check-in", "New concern"], "concern": "none", "ambiguous": true}},
+        {"day": 7, "text": "Still hiding most of the day, but she does come out at night.",
+         "gold": {"status": ["Stable", "Needs Attention"], "trend": ["Stable", "Improving"], "concern": "fear_or_hiding_or_shyness", "ambiguous": true}}
+      ]
+    },
+    {
+      "case_id": "teddy",
+      "pet_name": "Teddy",
+      "placement": "Dog, about 4 years, deep-chested large breed mix. Household: couple, no kids, no other pets.",
+      "adopter": "Marcy & Dev",
+      "checkins": [
+        {"day": 3, "text": "Teddy is a clown! Playing nonstop. Only odd thing is he hasn't pooped since we got him and his belly looks kind of big and tight. He keeps trying to throw up but nothing comes out. Otherwise he's happy!",
+         "gold": {"status": ["Urgent Human Follow-up"], "trend": ["First check-in", "New concern"], "concern": "possible_health_symptom"}}
+      ]
+    }
+  ]
+}

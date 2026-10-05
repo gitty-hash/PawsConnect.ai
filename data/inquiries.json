@@ -1,0 +1,86 @@
+[
+  {
+    "id": "inq01",
+    "sender": "Jordan P.",
+    "channel": "Web form",
+    "ambiguous": false,
+    "text": "Hi! I'd love to apply for Biscuit, the three-legged beagle. We have a fenced yard and one other calm dog. How do I start the application?"
+  },
+  {
+    "id": "inq02",
+    "sender": "Alicia M.",
+    "channel": "Text message",
+    "ambiguous": false,
+    "text": "URGENT - the dog we adopted last week just ate a whole bar of dark chocolate about an hour ago and now he's shaking and drooling. What do we do??"
+  },
+  {
+    "id": "inq03",
+    "sender": "Tom W.",
+    "channel": "Email",
+    "ambiguous": false,
+    "text": "I'm moving out of state in two weeks for a new job and can't take my 3-year-old lab mix with me. He's healthy, neutered and good with people. Can you take him?"
+  },
+  {
+    "id": "inq04",
+    "sender": "Sana K.",
+    "channel": "Web form",
+    "ambiguous": false,
+    "text": "I have free weekends and a spare bedroom. I'd love to foster kittens if you ever need extra help. I've fostered for another rescue before."
+  },
+  {
+    "id": "inq05",
+    "sender": "Marcus L.",
+    "channel": "Facebook message",
+    "ambiguous": false,
+    "text": "Found a very thin dog with a collar but no tag behind the Shell station on 5th Street. He's limping and won't let me get close. Can someone come?"
+  },
+  {
+    "id": "inq06",
+    "sender": "promo-winner-9931",
+    "channel": "Web form",
+    "ambiguous": false,
+    "text": "CONGRATULATIONS!!! You have been selected for a $500 gift card. Click http://bit.ly/claim-now-xx to claim before midnight."
+  },
+  {
+    "id": "inq07",
+    "sender": "Rachel D.",
+    "channel": "Email",
+    "ambiguous": true,
+    "text": "Our adopted cat Whiskers has been hiding under the bed for three days and has barely touched her food. Honestly we're not sure this is working out. Should we bring her back, or is this a vet thing?"
+  },
+  {
+    "id": "inq08",
+    "sender": "Chen H.",
+    "channel": "Web form",
+    "ambiguous": true,
+    "text": "My neighbor goes into the hospital tomorrow and his dog has nowhere to go. I can keep him a few days but then someone has to rehome him. Is this a foster thing or a surrender? Not sure who to talk to."
+  },
+  {
+    "id": "inq09",
+    "sender": "Emily S.",
+    "channel": "Web form",
+    "ambiguous": false,
+    "text": "Is Misty the long-haired cat still available? And do you have any other cats that are good with young children?"
+  },
+  {
+    "id": "inq10",
+    "sender": "Ben A.",
+    "channel": "Web form",
+    "ambiguous": false,
+    "text": "What are your adoption center hours on Saturday, and do I need an appointment to meet the dogs?"
+  },
+  {
+    "id": "inq11",
+    "sender": "Nora V.",
+    "channel": "Phone voicemail (transcribed)",
+    "ambiguous": false,
+    "text": "The dog I adopted from you on Tuesday bit my daughter's hand yesterday. It broke the skin. She's okay, we cleaned it, but I don't know what to do about the dog."
+  },
+  {
+    "id": "inq12",
+    "sender": "Luis G.",
+    "channel": "Email",
+    "ambiguous": false,
+    "text": "My adopted beagle has been pulling hard on the leash and jumps on guests. Any tips for training him, or do you offer a class?"
+  }
+]
