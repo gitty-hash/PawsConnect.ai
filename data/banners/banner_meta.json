@@ -1,0 +1,23 @@
+{
+  "pet": "Cocoa",
+  "tool": "OpenAI Images API (gpt-image-1, images.edit)",
+  "source_photo": "Testing_Images/dog_01.jpg (CC0)",
+  "size": "1536x1024",
+  "quality": "medium",
+  "prompt": "Create a warm, friendly adoption banner in a clean flat-illustration style for a shelter dog named Cocoa. Use the provided photo for the dog's look: a chocolate-brown Labrador-type dog looking up with an open, happy mouth. Landscape layout with the dog on the left and open space on the right. Soft warm colours (cream, terracotta, sage green), a few subtle paw-print shapes, a simple park background. Headline text exactly: 'Meet Cocoa'. Smaller line exactly: 'Adopt me through PawsConnect'. Spell the text exactly as given and add no other words. Do not add any other animals or people, and do not make any claims about the dog's behaviour.",
+  "generated": "2026-10-04",
+  "usage": {
+    "input_tokens": 495,
+    "input_tokens_details": {
+      "image_tokens": 323,
+      "text_tokens": 172
+    },
+    "output_tokens": 1568,
+    "total_tokens": 2063,
+    "output_tokens_details": {
+      "image_tokens": 1568,
+      "text_tokens": 0
+    }
+  },
+  "note": "AI-generated draft; staff approval required before posting."
+}

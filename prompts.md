@@ -309,6 +309,14 @@ Return ONLY a JSON object:
 The verdict is "revise" if ANY check fails.
 ```
 
+### Part B bonus - promotional banner (Chapter 2: Shopify Magic, image generation)
+
+Tool: OpenAI Images API (gpt-image-1, images.edit); input: Testing_Images/dog_01.jpg (CC0); size 1536x1024, quality medium; generated 2026-10-04.
+
+```text
+Create a warm, friendly adoption banner in a clean flat-illustration style for a shelter dog named Cocoa. Use the provided photo for the dog's look: a chocolate-brown Labrador-type dog looking up with an open, happy mouth. Landscape layout with the dog on the left and open space on the right. Soft warm colours (cream, terracotta, sage green), a few subtle paw-print shapes, a simple park background. Headline text exactly: 'Meet Cocoa'. Smaller line exactly: 'Adopt me through PawsConnect'. Spell the text exactly as given and add no other words. Do not add any other animals or people, and do not make any claims about the dog's behaviour.
+```
+
 ## 2. Iteration log
 
 Every entry below records what was **actually observed** when a prompt version was run against the bundled samples with `gpt-4o-mini` (live mode, 2026-10-04), the problem it exposed, and what changed. Version numbers match `PROMPT_VERSION` in `pawsconnect/prompts.py`. Where the fix was code rather than wording, that is stated.

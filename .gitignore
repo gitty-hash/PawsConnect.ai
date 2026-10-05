@@ -1,5 +1,31 @@
+# --- secrets (the app reads OPENAI_API_KEY from the environment; never commit a key)
+.env
+.env.*
+.streamlit/secrets.toml
+*.key
+*.pem
+
+# --- runtime data created while using the app (the seed events file IS tracked)
+data/pawstay_events.jsonl
+
+# --- Python
 __pycache__/
 *.pyc
-.env
-data/pawstay_events.jsonl
-.streamlit/secrets.toml
+.venv/
+venv/
+.pytest_cache/
+
+# --- generated report build files (rebuild with scripts/build_report.py / build_report_docx.py)
+docs/report/img/
+docs/report/report.html
+# the finished PDF/Word files live in the project root; the copies in docs/ are build output
+docs/PawsConnect_Design_Report.pdf
+docs/PawsConnect_Design_Report.docx
+
+# --- OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

@@ -40,6 +40,13 @@ def main() -> None:
         out.append(f"### {title}  _(version {P.PROMPT_VERSION[key]})_\n")
         for name, text in blocks:
             out.append(f"**{name}**\n\n```text\n{text}\n```\n")
+    import json
+    meta_path = ROOT / "data" / "banners" / "banner_meta.json"
+    if meta_path.exists():
+        m = json.loads(meta_path.read_text(encoding="utf-8"))
+        out.append("### Part B bonus - promotional banner (Chapter 2: Shopify Magic, image generation)\n")
+        out.append(f"Tool: {m['tool']}; input: {m['source_photo']}; size {m['size']}, quality {m['quality']}; generated {m['generated']}.\n")
+        out.append(f"```text\n{m['prompt']}\n```\n")
     log = ROOT / "docs" / "iteration_log.md"
     out.append("## 2. Iteration log\n")
     out.append(log.read_text(encoding="utf-8") if log.exists() else "_(not written yet)_\n")
