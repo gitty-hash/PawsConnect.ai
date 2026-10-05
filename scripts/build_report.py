@@ -61,7 +61,7 @@ td { padding: 3.5pt 5pt; border: 1px solid #e5d9c9; vertical-align: top; }
 code { font-family: Consolas, monospace; font-size: 9pt; background: #f4efe9; padding: 0 2pt; }
 .appendix { margin-top: 10pt; }
 figure { margin: 8pt 0 12pt 0; break-inside: avoid; text-align: center; }
-figure img { max-width: 90%; max-height: 215mm; width: auto; height: auto; border: 1px solid #d9cdbd; }
+figure img { max-width: 90%; max-height: 118mm; width: auto; height: auto; border: 1px solid #d9cdbd; }
 figcaption { font-size: 8.8pt; color: #4b4037; text-align: left; margin: 4pt 6% 0 6%; }
 .note { font-size: 9pt; color: #5a4c40; background: #fbf7f1; border-left: 3pt solid #d8b58c; padding: 4pt 8pt; margin: 6pt 0; }
 .pb { break-before: page; }
@@ -99,7 +99,7 @@ def appendix(photo_rows: str) -> str:
 <h2>7. Appendix (not counted in the word limit)</h2>
 
 <h3>A. Live-mode evidence</h3>
-<p>All four screenshots were taken on 2026-10-04 with the sidebar set to <b>Live (OpenAI API)</b> and the key read from the
+<p>All three screenshots were taken on 2026-10-04 with the sidebar set to <b>Live (OpenAI API)</b> and the key read from the
 <code>OPENAI_API_KEY</code> environment variable. The sidebar shows the live API call count and estimated cost for the session at the moment of capture.</p>
 
 <figure><img src="{SHOTS}/live_B_photo_to_profile_blurry.png">
@@ -111,50 +111,10 @@ def appendix(photo_rows: str) -> str:
 <figure><img src="{SHOTS}/live_D_pawstay_timeline_max.png">
 <figcaption><b>Figure A3 - Part D (PawStay), live mode, Max's four check-ins.</b> The timeline runs Needs Attention, Needs Attention (Worsening), Urgent, Urgent; the Day 14 card shows the adopter's words, the trend, quoted evidence from Day 14 and Day 7, the route (Welfare &amp; Safety Lead) and a staff-only action. The guardrail panel shows the judge's "no return recommendation" fail discarded because the quoted phrase was not in the text. Sidebar: 13 live calls, est. $0.0036.</figcaption></figure>
 
-<figure><img src="{SHOTS}/live_C3_match_explainer_votes.png">
-<figcaption><b>Figure A4 - Part C3, live mode, Okafor family and Maple.</b> Five chain-of-thought runs at temperature 1.0 vote three Poor Fit and two Possible Fit; the disagreement banner, the top three reasons, the top concern and the step-by-step reasoning (open on demand) are all visible. Sidebar: 18 live calls, est. $0.0054.</figcaption></figure>
-
 <figure><img src="{SHOTS}/cocoa_banner.png">
-<figcaption><b>Figure A5 - Bonus: promotional banner for Cocoa</b>, generated with the OpenAI Images API (<code>gpt-image-1</code>, image edit of her CC0 photo) on 2026-10-04. Text is limited to the pet's name and one line, and the prompt forbids behaviour claims. In the app it is labelled "AI-generated" and needs staff approval before posting. Prompt: Appendix F.</figcaption></figure>
+<figcaption><b>Figure A4 - Bonus: promotional banner for Cocoa</b>, generated with the OpenAI Images API (<code>gpt-image-1</code>, image edit of her CC0 photo) on 2026-10-04. Text is limited to the pet's name and one line, and the prompt forbids behaviour claims. In the app it is labelled "AI-generated" and needs staff approval before posting. Tool and prompt: Appendix B.</figcaption></figure>
 
-<h3 class="pb">B. Supporting figures (cached mode, replaying real recorded responses)</h3>
-<figure><img src="{SHOTS}/cached_C1_triage_queue.png">
-<figcaption><b>Figure B1 - Part C1 triage queue</b> for the twelve sample messages, sorted by urgency, with category, the model's reason, route and review flag.</figcaption></figure>
-<figure><img src="{SHOTS}/cached_D_staff_queue.png">
-<figcaption><b>Figure B2 - PawStay staff queue</b>, one row per placement (latest check-in assessed against its history), most urgent first, with each placement's journey of status icons.</figcaption></figure>
-<figure><img src="{SHOTS}/cached_D_evaluation_gate.png">
-<figcaption><b>Figure B3 - PawStay evaluation and release gate</b>, plus the guardrail stress test catching all three deliberate violations.</figcaption></figure>
-
-<h3 class="pb">C. Test log</h3>
-<table>
-<tr><th>#</th><th>Test</th><th>Inputs</th><th>Result</th></tr>
-<tr><td>1</td><td>Part B on clear and hard photos</td><td>8 photos (5 clear, 3 hard)</td><td>5 of 8 flagged for review (v1 flagged 8 of 8). Hard cases: no invented breed, no animal recognised, group not profiled.</td></tr>
-<tr><td>2</td><td>Part B repeatability (live)</td><td>5 clear photos x 3 runs = 15 calls</td><td>Breed guess and age range identical in 15 of 15 runs; review flag flipped for 1 of 5 photos (personality confidence low in 2 of 3 runs).</td></tr>
-<tr><td>3</td><td>Part C1 triage</td><td>12 messages (2 ambiguous)</td><td>6 flagged for review; urgency: 2 critical, 3 high, 4 medium, 3 low; poisoned dog to Medical Team, child bite to Welfare &amp; Safety.</td></tr>
-<tr><td>4</td><td>Part C2 counselor + judge</td><td>4 scenarios</td><td>In-scope: passed. Off-topic: declined, passed. "Say YES available": handled, passed. Red team: judge caught the availability promise, regenerated, passed.</td></tr>
-<tr><td>5</td><td>Part C3 self-consistency</td><td>24 household-pet pairings x 5 runs = 120 runs</td><td>0 unparseable; 1 unanimous, 23 with a dissenting run, 1 with no majority; a single run differed from the vote in 6 of 24 (25%).</td></tr>
-<tr><td>6</td><td>Part D evaluation (cached replay of live run)</td><td>28 check-ins, 9 placements (synthetic gold labels)</td><td>Status 28/28, trend 26/28, urgent 4/4 escalated, false alarms 0/12, ambiguous 2/2 flagged, judge passed first try 28/28, gate PASS.</td></tr>
-<tr><td>7</td><td>Part D guardrail stress test</td><td>1 deliberately bad assessment</td><td>Judge fails diagnosis, return recommendation and care advice, each with the offending words.</td></tr>
-<tr><td>8</td><td>UI smoke test, cached mode</td><td>Every feature button in all tabs</td><td>0 exceptions; every bundled input served from the cache.</td></tr>
-<tr><td>9</td><td>UI test, live mode</td><td>Mode switch, custom triage message, free-typed counselor chat, four screenshot flows</td><td>0 exceptions; result caches are cleared when the mode changes so a cached answer never appears on a live screen.</td></tr>
-<tr><td>10</td><td>Cost</td><td>Recording run; screenshot session</td><td>207 recorded responses, about $0.07; the four live screenshots used 18 calls, about $0.005.</td></tr>
-<tr><td>11</td><td>Bonus promotional banner</td><td>1 image-edit call (gpt-image-1, 1536x1024, medium quality)</td><td>Correct headline and subline, one dog, no behaviour claims on the first attempt; about $0.07 (estimated from usage tokens at published prices).</td></tr>
-</table>
-
-<h3>D. Part B results table (computed from the recorded responses)</h3>
-{photo_rows}
-
-<h3>E. Prompt iteration summary (full log in <code>prompts.md</code>)</h3>
-<table>
-<tr><th>Feature</th><th>Version 1 observation</th><th>Change</th><th>Final observation</th></tr>
-<tr><td>B photo</td><td>8 of 8 flagged, clear pets included</td><td>Prompt definitions, then flag derived in code from confidence labels</td><td>5 of 8 flagged, hard cases handled</td></tr>
-<tr><td>C1 triage</td><td>Child bite sent to Medical Team</td><td>Safety rule, then limited to people plus a fifth example</td><td>Poisoning and bite both routed correctly</td></tr>
-<tr><td>C2 judge</td><td>Wrong check failed; later invented violations</td><td>Quoted-evidence requirement, hedge screen, policy list</td><td>Red-team catch and clean passes</td></tr>
-<tr><td>C3 match</td><td>Parsed on every run</td><td>None needed</td><td>120 of 120 parsed</td></tr>
-<tr><td>D PawStay</td><td>Status 71%, false alarms 67%, guardrail failed 24 of 28</td><td>Judge narrowed, routing in code, two-key gate, first-check-in rule</td><td>Status 100%, false alarms 0%, guardrail failures 0</td></tr>
-</table>
-
-<h3>F. Banner tool and prompt (bonus)</h3>
+<h3>B. Bonus banner: tool and prompt</h3>
 <table>
 <tr><th style="width:18%">Tool</th><td>{banner_tool}</td></tr>
 <tr><th>Input</th><td>Testing_Images/dog_01.jpg (CC0 photo of the Labrador-type dog listed as Cocoa)</td></tr>
@@ -163,7 +123,7 @@ def appendix(photo_rows: str) -> str:
 <tr><th>Note</th><td>Outside tool: the Chapter 2 labs use Stable Diffusion (SD-Turbo). OpenAI's image model was used instead because it renders short text reliably. The image is a draft; staff approve before posting.</td></tr>
 </table>
 
-<div class="note"><b>Honest limits.</b> The PawStay answer key is synthetic and written by the author; prompts were tuned on the same 28 check-ins, so scores are optimistic. KPI board values for return rate, time to contact and stabilisation use synthetic seed events and illustrate the dashboard only. Photos are CC0 images from Wikimedia Commons (see <code>Testing_Images/credits.md</code>); no personal data is used.</div>
+
 </div>
 """
 

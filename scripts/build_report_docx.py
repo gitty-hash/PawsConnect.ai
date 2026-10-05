@@ -90,7 +90,7 @@ def add_picture(doc, src: str) -> None:
     path = (REPORT_DIR / src).resolve()
     with Image.open(path) as im:
         aspect = im.height / im.width
-    width = min(6.0, 8.1 / aspect)                   # keep tall screenshots on one page
+    width = min(6.0, 4.6 / aspect)                   # keep tall screenshots on one page
     doc.add_picture(str(path), width=Inches(width))
     doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
     doc.paragraphs[-1].paragraph_format.keep_with_next = True
